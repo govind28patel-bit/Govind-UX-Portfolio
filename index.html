@@ -2060,6 +2060,81 @@ svg.links{z-index:1} /* lines tuck behind the portrait instead of crossing the f
 .ax-c p{max-height:0; opacity:0; margin-top:-12px; transform:translateY(8px); overflow:hidden; transition:max-height .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease, transform .45s ease, margin .45s ease}
 .ax-c:hover p,.ax-c:focus-visible p,.ax-c.open p{max-height:12em; opacity:1; margin-top:0; transform:none}
 @media (max-width:760px){ .ax-proc{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px; padding-bottom:8px; scrollbar-width:none} .ax-proc::-webkit-scrollbar{display:none} .ax-c{min-height:200px; scroll-snap-align:start} .ax-proc .ax-c:hover,.ax-proc .ax-c.ax-rv.in:hover{transform:none} }
+/* ---- Case files: red-glow card carousel ---- */
+.rcs{position:relative; overflow:hidden; isolation:isolate; background:#060607; color:#fff; padding-block:96px 46px}
+.rcs-glow{position:absolute; left:50%; top:-30%; width:min(1400px,160vw); height:900px; transform:translateX(-50%); z-index:-1; pointer-events:none;
+  background:radial-gradient(48% 52% at 50% 46%, rgba(232,22,52,.85) 0%, rgba(160,8,30,.55) 38%, rgba(70,4,14,.25) 62%, transparent 76%); filter:blur(10px)}
+.rcs-head{position:relative; text-align:center; padding-inline:max(16px, env(safe-area-inset-left,0px))}
+.rcs-k{display:inline-block; font:500 .74rem/1 var(--f-sans); letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7)}
+.rcs-head h2{margin:16px auto 0; max-width:22ch; font:600 clamp(1.9rem, 3.6vw, 3.1rem)/1.06 var(--f-sans); letter-spacing:-.045em; color:#fff; text-wrap:balance}
+.rcs-pill{display:inline-block; margin-top:20px; padding:10px 20px; border-radius:999px; background:#fff; color:#111; font:500 .86rem/1 var(--f-sans); text-decoration:none; transition:transform .25s, background .25s}
+.rcs-pill:hover{transform:translateY(-2px); background:#ffd9d9}
+.rcs-view{position:relative; margin-top:48px; overflow:hidden; padding-block:10px 18px}
+.rcs-track{display:flex; gap:18px; will-change:transform; transition:transform .9s cubic-bezier(.65,0,.25,1)}
+.rcs-c{position:relative; flex:none; width:clamp(240px, 27vw, 380px); aspect-ratio:4/4.6; border-radius:14px; overflow:hidden; background:#151517; color:#fff; text-decoration:none;
+  transform:scale(.88); filter:brightness(.55) saturate(.8); transition:transform .9s cubic-bezier(.65,0,.25,1), filter .9s ease, box-shadow .6s}
+.rcs-c.on{transform:none; filter:none; box-shadow:0 30px 60px -24px rgba(232,22,52,.55)}
+.rcs-c img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease}
+.rcs-c:hover img{transform:scale(1.05)}
+.rcs-c::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.55) 22%, rgba(0,0,0,.12) 44%, rgba(0,0,0,.2) 60%, rgba(0,0,0,.86) 100%)}
+.rcs-c b{position:absolute; z-index:1; left:20px; right:20px; top:18px; font:800 clamp(2rem, 3.8vw, 3.4rem)/.92 var(--f-sans); letter-spacing:-.05em; text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.rcs-c span{position:absolute; z-index:1; left:20px; right:20px; bottom:18px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px; font:400 .82rem/1.35 var(--f-sans); color:rgba(255,255,255,.82)}
+.rcs-c span em{flex:none; font-style:normal; font-weight:600; color:#fff; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.14); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)}
+.rcs-c:focus-visible{outline:2px solid #fff; outline-offset:3px}
+.rcs-foot{margin:22px 0 0; text-align:center; font:400 .82rem/1.4 var(--f-sans); color:rgba(255,255,255,.55); padding-inline:16px}
+.rcs .rcs-head > *,.rcs .rcs-view{opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1)}
+.rcs.in .rcs-head > *,.rcs.in .rcs-view{opacity:1; transform:none}
+.rcs.in .rcs-head h2{transition-delay:.1s} .rcs.in .rcs-pill{transition-delay:.2s} .rcs.in .rcs-view{transition-delay:.3s}
+@media (max-width:700px){ .rcs{padding-block:70px 36px} .rcs-c{width:74vw} .rcs-track{gap:12px} .rcs-c b{font-size:2.3rem} .rcs-view{margin-top:34px} }
+/* ---- Case files: perspective carousel ---- */
+#work .pv-head{margin-bottom:10px}
+.pv-sec{padding-block:90px 40px}
+.pv{--sw:clamp(260px, 34vw, 480px); --ease:cubic-bezier(.22,1.12,.36,1); position:relative; height:calc(var(--sw) * .66 + 190px); outline:none; overflow:hidden; isolation:isolate}
+.pv:focus-visible{box-shadow:inset 0 0 0 2px rgba(255,90,31,.6); border-radius:18px}
+.pv-vp{position:absolute; inset:0 0 70px; overflow:hidden; perspective:1200px}
+.pv-track{position:absolute; left:50%; top:50%; display:flex; align-items:center; translate:0 -50%; transition:transform .9s var(--ease); will-change:transform}
+.pv-s{flex:none; width:var(--sw); perspective:1200px}
+.pv-in{display:flex; flex-direction:column; align-items:center; gap:14px; transform-style:preserve-3d; transition:transform .9s var(--ease); will-change:transform}
+.pv-img{display:block; width:100%; padding:0; border:0; background:none; cursor:pointer; border-radius:12px}
+.pv-img img{display:block; width:100%; height:auto; border-radius:12px; user-select:none; box-shadow:0 26px 50px -22px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.06)}
+.pv-lb{margin:0; display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; white-space:nowrap; transition:opacity .7s ease, filter .7s ease}
+.pv-lb b{font-weight:600; font-size:1.08rem; letter-spacing:-.02em; color:#f2f2f3}
+.pv-lb span{font-size:.84rem; color:#8a8a90}
+.pv-lb a{margin-top:6px; display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:999px; background:#ff5a1f; color:#fff; font-size:.82rem; font-weight:500; text-decoration:none; transition:background .2s, transform .2s}
+.pv-lb a:hover{background:#e84a12; transform:translateY(-1px)}
+.pv-lb a span{color:inherit; font-size:inherit}
+.pv-s:not(.on) .pv-lb{opacity:0; filter:blur(2px); pointer-events:none}
+.pv-ctl{position:absolute; left:50%; bottom:14px; z-index:10; translate:-50% 0; display:flex; align-items:center; gap:12px; padding:0 8px; border-radius:999px; border:1px solid rgba(255,255,255,.1); background:rgba(23,23,23,.7); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); color:#f5f5f5; box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.pv-b{width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border:0; border-radius:50%; background:none; color:inherit; cursor:pointer; transition:background .2s}
+.pv-b:hover{background:rgba(255,255,255,.1)}
+.pv-b svg{width:20px; height:20px}
+.pv-dots{display:flex; align-items:center; gap:8px}
+.pv-dots button{width:8px; height:8px; padding:0; border:0; border-radius:999px; background:currentColor; opacity:.3; cursor:pointer; transition:width .3s, opacity .3s}
+.pv-dots button.on{width:28px; opacity:1}
+@media (max-width:700px){ .pv{--sw:72vw; height:calc(var(--sw) * .66 + 200px)} .pv-lb b{font-size:1rem} }
+@media (prefers-reduced-motion: reduce){ .pv-track,.pv-in{transition-duration:.01s} }
+/* problem / solution reveal on the active cover */
+.pv-cv{position:relative; width:100%; border-radius:12px}
+.pv-ps{position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; gap:12px; padding:18px 20px; border-radius:12px; overflow:auto; text-align:left; color:#f2f2f3; cursor:pointer;
+  background:linear-gradient(150deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.06) 42%, rgba(255,255,255,.12) 100%), rgba(14,14,18,.52); -webkit-backdrop-filter:blur(16px) saturate(1.5); backdrop-filter:blur(16px) saturate(1.5); border:1px solid rgba(255,255,255,.32); box-shadow:inset 0 1px 0 rgba(255,255,255,.45), inset 0 0 28px rgba(255,255,255,.08), 0 18px 40px -18px rgba(0,0,0,.6); text-shadow:0 1px 2px rgba(0,0,0,.35);
+  opacity:0; transform:scale(.97); pointer-events:none; transition:opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1)}
+.pv-ps b{display:block; margin-bottom:4px; font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#ff7a3d}
+.pv-ps p{margin:0; font-size:clamp(.7rem, .95vw, .82rem); line-height:1.42; color:#f0f0f2}
+.pv-s.on.open .pv-ps{opacity:1; transform:none; pointer-events:auto}
+@media (min-width:701px){ .pv-ps{position:static; display:none; margin-top:12px; padding:18px 20px; opacity:1; transform:none; overflow:visible; background:linear-gradient(150deg, rgba(255,255,255,.14), rgba(255,255,255,.04) 45%, rgba(255,255,255,.09)), rgba(30,30,36,.55)} .pv-s.on.open .pv-ps{display:flex} .pv-ps p{font-size:.86rem} }
+.pv-hint{font-size:.74rem !important; color:#6f6f75 !important}
+.pv-s.open .pv-hint{visibility:hidden}
+.pv-track{top:calc((var(--sw) * .66 + 120px) / 2)}
+.pv-cv .pv-ps{position:absolute !important; inset:auto; left:0; right:0; top:calc(100% + 12px); bottom:auto; height:auto; margin:0 !important; overflow:visible}
+.pv-lb{transition:transform .45s cubic-bezier(.2,.8,.2,1), opacity .7s ease, filter .7s ease}
+.pv-s.open .pv-lb{transform:translateY(calc(var(--ph, 0px) + 12px))}
+@media (max-width:700px){ .pv-track{top:calc((var(--sw) * .66 + 130px) / 2)} }
+@media (max-width:700px){
+  .pv-ps{position:static; display:none; margin-top:12px; padding:16px; opacity:1; transform:none; overflow:visible}
+  .pv-s.on.open .pv-ps{display:flex}
+  .pv-ps p{font-size:.84rem}
+  .pv-ps{background:linear-gradient(150deg, rgba(255,255,255,.14), rgba(255,255,255,.04) 45%, rgba(255,255,255,.09)), rgba(30,30,36,.55)}
+}
 #mhPlay{display:none !important}
 /* process cards share the Deliver palette */
 .ax-proc .ax-c{background:radial-gradient(70% 55% at 55% 112%, rgba(255,106,38,.62), rgba(160,50,10,.22) 48%, transparent 74%), #0b0b0c; color:#e6e6e8; text-align:left; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
@@ -2235,7 +2310,26 @@ section.snap,#moments #tools{display:none !important}
       <a class="pill solid" href="resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
     </div></div>
   </section>
-  <section class="blk jr cf" id="work" aria-label="Case files">
+  <section class="blk pv-sec" id="work" aria-label="Case files">
+    <div class="wrap">
+      <div class="sec-head pv-head"><span class="jr-chip"><i></i>6 projects · research, product &amp; service</span><h2>Case <span class="o">files</span></h2><p>From a skincare app to electric flight. Hover or tap a cover to see the problem and how I solved it.</p></div>
+      <div class="pv" id="pv" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Case studies">
+        <div class="pv-vp"><div class="pv-track" id="pvTrack"></div></div>
+        <div class="pv-ctl"><button type="button" class="pv-b" id="pvPrev" aria-label="Show previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="pv-dots" id="pvDots"></div><button type="button" class="pv-b" id="pvNext" aria-label="Show next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+  <section class="rcs" id="work-rcs" aria-label="Case files (previous carousel)" hidden>
+    <div class="rcs-glow" aria-hidden="true"></div>
+    <div class="rcs-head">
+      <span class="rcs-k">Case files &middot; 6 projects</span>
+      <h2>Research-led case studies,<br>designed in Pune since 2023</h2>
+      <a class="rcs-pill" href="https://www.behance.net/govindpatel2003" target="_blank" rel="noopener">More on Behance</a>
+    </div>
+    <div class="rcs-view" id="rcsView"><div class="rcs-track" id="rcsTrack"></div></div>
+    <p class="rcs-foot">Each card opens the full case study &middot; research, flows, UI and prototype</p>
+  </section>
+  <section class="blk jr cf" id="work-old" aria-label="Case files (previous)" hidden>
     <div class="wrap">
       <div class="jr-frame" id="cfFrame">
         <div class="jr-top"><span class="jr-brand"><i></i>Case Files</span><span class="jr-hint">Tap a card to open the case</span><span class="jr-count">Case <b id="cfNum">01</b> / 06</span></div>
@@ -3345,6 +3439,80 @@ try {
     c.addEventListener('click', t);
     c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
   });
+})();
+(() => {
+  const sec = document.getElementById('work'), view = document.getElementById('rcsView'), track = document.getElementById('rcsTrack');
+  if (!sec || !track || !sec.classList.contains('rcs')) return;
+  const D = [
+    ['DermaSafe', 'An allergy-aware skincare ingredient checker.', 'UI · 2026', 'dermasafe-poster.jpg', 'https://govind28patel-bit.github.io/Beauty-Personal-Care/', '4% 50%'],
+    ['Vayu', 'The stop is the product: electric regional flight.', 'Service · 2026', 'vayu-cover.jpg', 'https://govind28patel-bit.github.io/Electric-Flight-Aviation/'],
+    ['Konecranes', 'Monitoring outputs turned into decision-ready guidance.', 'Team concept', 'konecranes-cover.jpg', 'https://govind28patel-bit.github.io/Konecranes/'],
+    ['Bank of Baroda', 'Usability testing, then a website redesign.', 'Research', 'bob-cover.jpg', 'https://govind28patel-bit.github.io/bank-of-baroda/'],
+    ['Furever Family', 'Pet health care in one app.', 'App', 'pet-cover.jpg', 'https://govind28patel-bit.github.io/pet-health-care-app/', '0% 50%'],
+    ['Multi Device', 'One trip across phone, watch and car.', 'XEV 9e', 'multidevice-cover.jpg', 'https://govind28patel-bit.github.io/Multi-device-design/'] ];
+  const N = D.length, all = [...D, ...D, ...D];
+  track.innerHTML = all.map((d, k) => `<a class="rcs-c" href="${d[4]}" target="_blank" rel="noopener"${k < N || k >= 2 * N ? ' tabindex="-1" aria-hidden="true"' : ''}><img src="${d[3]}" alt="" loading="lazy"${d[5] ? ` style="object-position:${d[5]}"` : ''}><b>${d[0]}</b><span>${d[1]}<em>${d[2]}</em></span></a>`).join('');
+  const cards = [...track.children];
+  let i = N, timer = 0, hold = false;
+  const place = anim => { const c = cards[i]; track.style.transition = anim ? '' : 'none';
+    track.style.transform = `translateX(${view.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2)}px)`;
+    cards.forEach((x, k) => x.classList.toggle('on', k === i)); if (!anim) { track.offsetWidth; track.style.transition = ''; } };
+  const step = d => { i += d; place(true); };
+  track.addEventListener('transitionend', e => { if (e.target !== track) return; if (i >= 2 * N) { i -= N; place(false); } else if (i < N) { i += N; place(false); } });
+  const auto = () => { clearInterval(timer); if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(() => { if (!hold && !document.hidden && sec.classList.contains('in')) step(1); }, 3000); };
+  sec.addEventListener('mouseenter', () => hold = true); sec.addEventListener('mouseleave', () => hold = false);
+  sec.addEventListener('focusin', () => hold = true); sec.addEventListener('focusout', () => hold = false);
+  cards.forEach((c, k) => c.addEventListener('click', e => { if (k !== i) { e.preventDefault(); i = k; place(true); auto(); } }));
+  let sx = null; view.addEventListener('pointerdown', e => { sx = e.clientX; });
+  view.addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) { step(dx < 0 ? 1 : -1); auto(); } });
+  place(false); addEventListener('resize', () => place(false)); addEventListener('load', () => place(false));
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { sec.classList.add('in'); place(false); auto(); o.disconnect(); } }), { threshold: .2 }).observe(sec);
+})();
+(() => {
+  const pv = document.getElementById('pv'), track = document.getElementById('pvTrack'), dots = document.getElementById('pvDots'); if (!pv || !track) return;
+  const D = [
+    ['DermaSafe', 'UI case study · 2026', 'dermasafe-poster.jpg', 'https://govind28patel-bit.github.io/Beauty-Personal-Care/'],
+    ['Vayu', 'Service design · 2026', 'vayu-cover.jpg', 'https://govind28patel-bit.github.io/Electric-Flight-Aviation/'],
+    ['Konecranes', 'UX case study · Team concept', 'konecranes-cover.jpg', 'https://govind28patel-bit.github.io/Konecranes/'],
+    ['Bank of Baroda', 'Usability testing · Web redesign', 'bob-cover.jpg', 'https://govind28patel-bit.github.io/bank-of-baroda/'],
+    ['Furever Family', 'Mobile app · Pet health care', 'pet-cover.jpg', 'https://govind28patel-bit.github.io/pet-health-care-app/'],
+    ['Multi Device', 'Multi-device concept · XEV 9e', 'multidevice-cover.jpg', 'https://govind28patel-bit.github.io/Multi-device-design/'] ];
+  const PSX = [["Many people in India with allergy-prone skin mix prescribed, Ayurvedic and unbranded products whose labels use non-standard ingredient names, so they react even after reading the label.", "I designed an allergy-aware ingredient checker that scans a whole shelf against the user’s allergy profile, catches allergens hidden under alternate names, and shows the source behind every warning. My role: research, flows, UI and a coded prototype, solo."], ["Electric aircraft need a 20–45 minute stop to charge or swap batteries. India wants regional flights, but most UDAN routes fail on cost, and a stop that feels like a delay empties the seats electric flight depends on.", "I designed the stop as the product: it is shown honestly at booking, groups get a 12-hour seat hold, passengers see a live battery and countdown, Time Bank and Arrive Fresh make the wait useful, and a Time Promise pays out automatically past 45 minutes. I produced as-is and to-be service blueprints, an app and a website. My role: research, blueprint, UX and UI."], ["Condition-monitoring outputs for crane services were hard to turn into a clear next action for the maintenance and service people reading them.", "Our team of five reshaped those outputs into decision-ready guidance over six design iterations and presented a demo."], ["Key actions were buried. Loan details, FD rates and login sat 3–4 levels deep behind banners, floating buttons and long menus, and first-time users had no guidance.", "I tested five loan tasks with three participants, benchmarked SBI, HDFC and Axis, and audited five screens. I then redesigned the homepage, grouped the navigation and built 4-step loan and FD flows that show rates, status and a full review before commitment. This was a small qualitative study, so I treated findings as directional."], ["Pet owners struggle to get immediate vet help, ambulances or rescue. With no single platform, care gets delayed: 65% of pet parents I surveyed in Pune still book vets by phone.", "One app for vet and grooming bookings, care reminders, health records and community, plus an SOS that books an ambulance with one swipe from any screen."], ["XEV owners pull out the phone for one number. There’s no lock confirmation after walking away, battery needs the app, the low-battery alert only lives on the dashboard, and AC can’t be started from the wrist.", "I designed Me4U across phone, watch and car display, so owners check, control and find the car from whichever device is closest. Every task is within two taps of Home."]];
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const STEP = 60, SCALE = .85, N = D.length; let cur = 0;
+  track.innerHTML = D.map((d, i) => `<div class="pv-s" data-i="${i}"><div class="pv-in"><div class="pv-cv"><button type="button" class="pv-img" aria-label="Show ${d[0]}"><img src="${d[2]}" alt="${d[0]} case study cover" draggable="false"></button><div class="pv-ps" aria-hidden="true"><div><b>The problem</b><p>${esc(PSX[i][0])}</p></div><div><b>How I solved it</b><p>${esc(PSX[i][1])}</p></div></div></div><p class="pv-lb"><b>${d[0]}</b><span>${d[1]}</span><span class="pv-hint">Hover or tap the cover for the problem &amp; solution</span><a href="${d[3]}" target="_blank" rel="noopener">View case study <span aria-hidden="true">&#8599;</span></a></p></div></div>`).join('');
+  dots.innerHTML = D.map((d, i) => `<button type="button" aria-label="Show slide ${i + 1}: ${d[0]}"></button>`).join('');
+  const slides = [...track.children], dbs = [...dots.children];
+  const render = () => {
+    const w = slides[0].offsetWidth;
+    track.style.transform = `translateX(${-(cur * w + w / 2)}px)`;
+    slides.forEach((s, i) => { const on = i === cur; s.classList.toggle('on', on);
+      s.firstElementChild.style.transform = `rotateY(${(cur - i) * STEP}deg) scale(${on ? 1 : SCALE})`;
+      s.querySelector('.pv-img').setAttribute('aria-current', on ? 'true' : 'false');
+      s.querySelector('.pv-lb a').tabIndex = on ? 0 : -1; });
+    dbs.forEach((b, i) => { b.classList.toggle('on', i === cur); b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+  };
+  const setOpen = (s, on) => { s.classList.toggle('open', on); s.querySelector('.pv-ps').setAttribute('aria-hidden', String(!on)); s.querySelector('.pv-img').setAttribute('aria-expanded', String(on)); pv.classList.toggle('ps-open', on); s.style.setProperty('--ph', on ? s.querySelector('.pv-ps').offsetHeight + 'px' : '0px'); pv.style.height = on ? `calc(var(--sw) * .66 + 212px + ${s.querySelector('.pv-ps').offsetHeight}px)` : ''; };
+  const go = i => { slides.forEach(s => { delete s.dataset.hv; setOpen(s, false); }); cur = (i + N) % N; render(); };
+  slides.forEach((s, i) => { const cv = s.querySelector('.pv-cv');
+    cv.addEventListener('click', () => { if (i !== cur) return go(i); if (s.dataset.hv) delete s.dataset.hv; else setOpen(s, !s.classList.contains('open')); });
+    cv.addEventListener('mouseenter', () => { if (i === cur && matchMedia('(hover:hover)').matches && !s.classList.contains('open')) { s.dataset.hv = '1'; setOpen(s, true); } });
+    cv.addEventListener('mouseleave', () => { if (s.dataset.hv) { delete s.dataset.hv; setOpen(s, false); } }); });
+  dbs.forEach((b, i) => b.addEventListener('click', () => go(i)));
+  document.getElementById('pvPrev').addEventListener('click', () => go(cur - 1));
+  document.getElementById('pvNext').addEventListener('click', () => go(cur + 1));
+  pv.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); } if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); } });
+  let sx = null; pv.addEventListener('pointerdown', e => { sx = e.clientX; });
+  pv.addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); });
+  addEventListener('resize', render); render();
+})();
+(() => {
+  if (!/github\.io$/i.test(location.hostname)) return;
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href*="govind28patel-bit.github.io"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault(); location.href = a.href;
+  }, true);
 })();
 </script>
 
